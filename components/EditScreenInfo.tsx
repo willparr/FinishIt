@@ -1,6 +1,6 @@
 import * as WebBrowser from 'expo-web-browser'
 import React from 'react'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { Button, StyleSheet, TouchableOpacity } from 'react-native'
 
 import Colors from '../constants/Colors'
 import { MonoText } from './StyledText'
@@ -12,49 +12,14 @@ export default function EditScreenInfo({
   path: string
 }): JSX.Element {
   return (
-    <View>
-      <View style={styles.getStartedContainer}>
-        <Text
-          darkColor="rgba(255,255,255,0.8)"
-          lightColor="rgba(0,0,0,0.8)"
-          style={styles.getStartedText}
-        >
-          Open up the code for this screen:
-        </Text>
-
-        <View
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)"
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-        >
-          <MonoText>{path}</MonoText>
-        </View>
-
-        <Text
-          darkColor="rgba(255,255,255,0.8)"
-          lightColor="rgba(0,0,0,0.8)"
-          style={styles.getStartedText}
-        >
-          Change any of the text, save the file, and your app will automatically
-          update.
-        </Text>
-      </View>
-
-      <View style={styles.helpContainer}>
-        <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Text lightColor={Colors.light.tint} style={styles.helpLinkText}>
-            Tap here if your app does not automatically update after making
-            changes
-          </Text>
-        </TouchableOpacity>
-      </View>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10 }}>
+      <TouchableOpacity
+        onPress={() => {
+          console.log('task added')
+        }}
+        style={styles.floatingButton}
+      />
     </View>
-  )
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet',
   )
 }
 
@@ -78,6 +43,12 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     marginBottom: 20,
     textAlign: 'center',
+  },
+  floatingButton: {
+    backgroundColor: '#ee6e73',
+    borderRadius: 30,
+    height: 60,
+    width: 60,
   },
   getStartedContainer: {
     alignItems: 'center',
