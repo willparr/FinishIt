@@ -8,6 +8,7 @@ import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 import TabOneScreen from '../screens/TabOneScreen'
 import TabTwoScreen from '../screens/TabTwoScreen'
+import { default as Storybook } from '../storybook'
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>()
@@ -32,6 +33,15 @@ export default function BottomTabNavigator(): JSX.Element {
       <BottomTab.Screen
         component={TabTwoNavigator}
         name="TabTwo"
+        options={{
+          tabBarIcon: ({ color }: { color: string }) => (
+            <TabBarIcon color={color} name="ios-code" />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        component={Storybook}
+        name="TabThree"
         options={{
           tabBarIcon: ({ color }: { color: string }) => (
             <TabBarIcon color={color} name="ios-code" />
