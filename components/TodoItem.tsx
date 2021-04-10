@@ -4,32 +4,44 @@ import { StyleSheet, Text, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { theme } from '../constants/theme'
+import { useTodos } from '../hooks/useTodos'
 import { Divider } from './Divider'
 
 export interface TodoItemProps {
   title: string
   completed: boolean
   createdAt: number
-  onPress: () => void
+  id: string
 }
 
 export function TodoItem(props: TodoItemProps): JSX.Element {
-  const { onPress, title, completed, createdAt } = props
+  const { title, completed, createdAt, id } = props
+  const { deleteTodo, completeTodo } = useTodos()
+
   return (
-    <View style={styles.todoContainerStyle}>
-      <Text
-        style={{
-          color: completed ? 'grey' : 'black',
-          fontSize: theme.typography.size.large,
-          textDecorationLine: completed ? 'line-through' : 'none',
-        }}
-      >
-        {title}
-      </Text>
-      <TouchableOpacity onPress={onPress} style={styles.deleteButtonStyle}>
-        <FontAwesome name="trash" size={theme.typography.size.large} />
-      </TouchableOpacity>
-    </View>
+    <>
+      <Divider />
+      <View style={styles.todoContainerStyle}>
+        <TouchableOpacity onPress={() => completeTodo(id)}>
+          <Text
+            style={{
+              color: completed ? 'grey' : 'black',
+              fontSize: theme.typography.size.large,
+              textDecorationLine: completed ? 'line-through' : 'none',
+            }}
+          >
+            {title}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => deleteTodo(id)}
+          style={styles.deleteButtonStyle}
+        >
+          <FontAwesome name="trash" size={theme.typography.size.large} />
+        </TouchableOpacity>
+      </View>
+      <Divider />
+    </>
   )
 }
 
@@ -41,10 +53,11 @@ const styles = StyleSheet.create({
   todoContainerStyle: {
     alignItems: 'center',
     backgroundColor: theme.colors.lightGray,
+    borderRadius: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: theme.spacing.medium,
-    paddingVertical: theme.spacing.small,
+    paddingVertical: theme.spacing.medium,
     width: '100%',
   },
 })

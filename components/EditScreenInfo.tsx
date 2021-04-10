@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import { set } from 'lodash'
+import React from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
+import { useTodos } from '../hooks/useTodos'
 import { View } from './Themed'
 import { TodoItem } from './TodoItem'
 
@@ -17,23 +19,10 @@ export default function EditScreenInfo({
 }: {
   path: string
 }): JSX.Element {
-  const [todos, setTodos] = useState<undefined | TodoItemProps[]>([])
+  const { addTodo, getTodos } = useTodos()
+  const todos = getTodos()
 
-  function addTodo() {
-    const todo = {
-      completed: false,
-      createdAt: Date.now(),
-      onPress: () => {
-        console.log('onPress clicked')
-      },
-      title: 'New Todo',
-    }
-    console.log(todos)
-    setTodos((prevState) => {
-      const newTodos = prevState?.concat(todo)
-      return newTodos
-    })
-  }
+  console.log(JSON.stringify(todos))
 
   return (
     <View
@@ -44,17 +33,21 @@ export default function EditScreenInfo({
       }}
     >
       <ScrollView style={{ flex: 1 }}>
-        {todos?.map((todo) => {
-          return (
-            <TodoItem
-              completed={todo.completed}
-              createdAt={todo.createdAt}
-              key={todo.createdAt}
-              onPress={() => {}}
-              title={todo.title}
-            />
-          )
-        })}
+        {!!todos &&
+          Object.entries(todos).map(([key, todo]) => {
+            if (!todo) {
+              return
+            }
+            return (
+              <TodoItem
+                completed={todo.completed}
+                createdAt={todo.createdAt}
+                id={todo.id}
+                key={todo.createdAt}
+                title={todo.title}
+              />
+            )
+          })}
       </ScrollView>
       <TouchableOpacity
         onPress={() => {

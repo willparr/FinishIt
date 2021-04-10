@@ -2,7 +2,8 @@ import * as React from 'react'
 import { StyleSheet } from 'react-native'
 
 import EditScreenInfo from '../components/EditScreenInfo'
-import { Text, View } from '../components/Themed'
+import { View } from '../components/Themed'
+import { theme } from '../constants/theme'
 
 export default function TabOneScreen(): JSX.Element {
   return (
@@ -15,6 +16,7 @@ export default function TabOneScreen(): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: theme.spacing.medium,
   },
   separator: {
     height: 1,

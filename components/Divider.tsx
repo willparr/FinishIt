@@ -6,8 +6,7 @@ export function Divider(): JSX.Element {
     <View
       style={{
         alignSelf: 'stretch',
-        borderBottomColor: theme.colors.gray,
-        borderBottomWidth: StyleSheet.hairlineWidth,
+        padding: 3,
       }}
     />
   )
