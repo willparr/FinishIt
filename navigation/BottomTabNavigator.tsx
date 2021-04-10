@@ -14,7 +14,7 @@ import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types'
 const BottomTab = createBottomTabNavigator<BottomTabParamList>()
 
 export default function BottomTabNavigator(): JSX.Element {
-  const colorScheme = useColorScheme()
+  const colorScheme = 'light'
 
   return (
     <BottomTab.Navigator

@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@artsy/fresnel@^1.2.0":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.3.1.tgz#1df2ea9bb7b6a1a4e7ae9aa837f2af1a402ee3cf"
+  integrity sha512-p3tZxhtUWELqok1VLAYjGlMaBl30K6U+PVYXuV/8xD+Y+wgTxMMIrrKU61zKaRh3Py7xj9if9rpsOESVGJD4Wg==
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"
@@ -1135,6 +1140,17 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@dripsy/core@^1.5.5-alpha.6":
+  version "1.5.5-alpha.6"
+  resolved "https://registry.yarnpkg.com/@dripsy/core/-/core-1.5.5-alpha.6.tgz#e4bf5563bb60484c9a54966f9fffbcac2efd0c68"
+  integrity sha512-6OXj6XtUxrXVdRQouBAFBpoRccN8BZQsrp29j0atLIJ9uVYrRjRlc3T8bo5puzJxVnJwx1ALl0LyCGlmrhDjfw==
+  dependencies:
+    "@artsy/fresnel" "^1.2.0"
+    "@expo/html-elements" "^0.0.1"
+    "@react-native-community/hooks" "^2.6.0"
+    "@theme-ui/core" "^0.4.0-rc.1"
+    "@theme-ui/css" "^0.4.0-rc.1"
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
@@ -1152,7 +1168,7 @@
     "@emotion/utils" "0.11.3"
     "@emotion/weak-memoize" "0.2.5"
 
-"@emotion/core@^10.0.20", "@emotion/core@^10.0.9":
+"@emotion/core@^10.0.0", "@emotion/core@^10.0.20", "@emotion/core@^10.0.9":
   version "10.1.1"
   resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.1.1.tgz#c956c1365f2f2481960064bcb8c4732e5fb612c3"
   integrity sha512-ZMLG6qpXR8x031NXD8HJqugy/AZSkAuMxxqB46pmAR7ze47MhNJ56cdoX243QPZdGctrdfo+s08yZTiwaUcRKA==
@@ -1350,6 +1366,11 @@
     pngjs "^5.0.0"
     xcode "^3.0.0"
     xml-js "^1.6.11"
+
+"@expo/html-elements@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@expo/html-elements/-/html-elements-0.0.1.tgz#ed3aaa5c76de2dd26fd51b532d6d63e3d7f2d8e5"
+  integrity sha512-dSBl3WBjdmJ907Na42Ce9uknwUBKIDnpDFBPz6ikMQYaQFb97pXZQSCo2bnOhbER7ieeLy8RPm+VDtTIVlfZ1Q==
 
 "@expo/image-utils@0.3.12":
   version "0.3.12"
@@ -2318,6 +2339,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz#e42b1bef12d2415411519fd528e64b593b1363dc"
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
+"@react-native-community/hooks@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/hooks/-/hooks-2.6.0.tgz#dd5f19601eb3684c6bcdd3df3d0c04cf44c24cff"
+  integrity sha512-emBGKvhJ0h++lLJQ5ejsj+od9G67nEaihjvfSx7/JWvNrQGAhP9U0OZqgb9dkKzor9Ufaj9SGt8RNY97cGzttw==
+
 "@react-native-community/masked-view@0.1.10":
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
@@ -2802,6 +2828,22 @@
     store2 "^2.7.1"
     telejson "^3.2.0"
     util-deprecate "^1.0.2"
+
+"@theme-ui/core@^0.4.0-rc.1":
+  version "0.4.0-rc.13"
+  resolved "https://registry.yarnpkg.com/@theme-ui/core/-/core-0.4.0-rc.13.tgz#ff206b3d2113f4f78df267d371ed21b03ac2da29"
+  integrity sha512-WJZWuA65QrZe6lKx+zLwKCK9JYuaGtnbGc3t+rdpc7hwX519IEM/lIVaLIzrpwih+sn3g64Npmls6gCOIrIIYQ==
+  dependencies:
+    "@emotion/core" "^10.0.0"
+    "@theme-ui/css" "^0.4.0-rc.13"
+    deepmerge "^4.2.2"
+
+"@theme-ui/css@^0.4.0-rc.1", "@theme-ui/css@^0.4.0-rc.13":
+  version "0.4.0-rc.13"
+  resolved "https://registry.yarnpkg.com/@theme-ui/css/-/css-0.4.0-rc.13.tgz#ffe585bebe4fc91fea2935bb6beb40f50c6a7cf0"
+  integrity sha512-YEO462Ia26T+i/6p/B4EJt/p3qJanPsSYpRP7MK4GchF/LbuHi0MS+zc4TpctIuIqpXgQR3w75b6xJZG1Oqn1Q==
+  dependencies:
+    csstype "^2.5.7"
 
 "@tsconfig/react-native@^1.0.3":
   version "1.0.3"
@@ -6035,6 +6077,13 @@ dotenv@^8.0.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
+
+dripsy@^1.5.5-alpha.6:
+  version "1.5.5-alpha.6"
+  resolved "https://registry.yarnpkg.com/dripsy/-/dripsy-1.5.5-alpha.6.tgz#5621c7cc9c18e3953ec3579c88fa392330cfbdda"
+  integrity sha512-oY8zMkCU00gkIMuh6BN1Xc4mXkD/cJVeJbN/o3pDGvUvmqGlW+bsnA2e+bdz++7nn4EFbnfgkQ8LezfphifplQ==
+  dependencies:
+    "@dripsy/core" "^1.5.5-alpha.6"
 
 duplexer@^0.1.1:
   version "0.1.2"
