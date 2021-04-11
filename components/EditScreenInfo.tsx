@@ -1,9 +1,12 @@
+import { FontAwesome } from '@expo/vector-icons'
 import { set } from 'lodash'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
+import { theme } from '../constants/theme'
 import { useTodos } from '../hooks/useTodos'
+import { AddTaskModal } from './AddTaskModal'
 import { View } from './Themed'
 import { TodoItem } from './TodoItem'
 
@@ -19,19 +22,13 @@ export default function EditScreenInfo({
 }: {
   path: string
 }): JSX.Element {
-  const { addTodo, getTodos } = useTodos()
-  const todos = getTodos()
+  const { addTodo, todos } = useTodos()
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
-  console.log(JSON.stringify(todos))
+  console.log('todos:', JSON.stringify(todos))
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'space-between',
-        padding: 10,
-      }}
-    >
+    <View style={styles.listContainer}>
       <ScrollView style={{ flex: 1 }}>
         {!!todos &&
           Object.entries(todos).map(([key, todo]) => {
@@ -49,24 +46,26 @@ export default function EditScreenInfo({
             )
           })}
       </ScrollView>
-      <TouchableOpacity
-        onPress={() => {
-          addTodo()
-        }}
-        style={styles.floatingButton}
-      />
+      <AddTaskModal />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   floatingButton: {
+    alignItems: 'center',
     alignSelf: 'center',
-    backgroundColor: '#ee6e73',
+    backgroundColor: '#5c8ff7',
     borderRadius: 30,
     bottom: -15,
     height: 60,
+    justifyContent: 'center',
     position: 'absolute',
     width: 60,
+  },
+  listContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+    padding: 10,
   },
 })

@@ -7,26 +7,31 @@ import { useCache } from './useCache'
 export function useTodos() {
   const { cache, setCache } = useCache()
 
-  function addTodo() {
+  function addTodo(userInput: string) {
     const todo = {
       completed: false,
       createdAt: Date.now(),
       id: Date.now().toString(),
-      title: 'New Todo',
+      title: userInput,
     }
     const nextCache = set(cache, `todos.${todo.id}`, todo)
+    console.debug('[addTodo] ', JSON.stringify(nextCache?.todos?.[todo.id]))
     setCache(nextCache)
   }
 
   function completeTodo(todoId: string) {
-    console.log('[cache] ', cache)
-    console.log('[completetodo] ', todoId)
-    const nextCache = set(cache, `todos.${todoId}.completed`, true)
+    console.debug('[cache] ', JSON.stringify(cache))
+    console.log('[completetodo] ', JSON.stringify(cache?.todos?.[todoId]))
+    const prevState = cache?.todos?.[todoId].completed
+    const nextCache = set(cache, `todos.${todoId}.completed`, !prevState)
+    console.log('[completetodo] ', JSON.stringify(nextCache?.todos?.[todoId]))
     setCache(nextCache)
   }
 
   function deleteTodo(todoId: string) {
+    console.log('[deletetodo] ', JSON.stringify(cache?.todos?.[todoId]))
     const nextCache = set(cache, `todos.${todoId}`, undefined)
+    console.log('[deletetodo] ', JSON.stringify(nextCache?.todos?.[todoId]))
     setCache(nextCache)
   }
 
@@ -34,5 +39,5 @@ export function useTodos() {
     return cache?.todos ?? {}
   }
 
-  return { addTodo, completeTodo, deleteTodo, getTodos }
+  return { addTodo, completeTodo, deleteTodo, getTodos, todos: getTodos() }
 }

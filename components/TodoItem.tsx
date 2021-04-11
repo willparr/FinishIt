@@ -22,11 +22,16 @@ export function TodoItem(props: TodoItemProps): JSX.Element {
     <>
       <Divider />
       <View style={styles.todoContainerStyle}>
-        <TouchableOpacity onPress={() => completeTodo(id)}>
+        <TouchableOpacity
+          onPress={() => completeTodo(id)}
+          style={{ width: '90%' }}
+        >
           <Text
             style={{
               color: completed ? 'grey' : 'black',
-              fontSize: theme.typography.size.large,
+              flexWrap: 'wrap',
+              fontSize: theme.typography.size.medium,
+              paddingRight: theme.spacing.small,
               textDecorationLine: completed ? 'line-through' : 'none',
             }}
           >
@@ -47,13 +52,12 @@ export function TodoItem(props: TodoItemProps): JSX.Element {
 
 const styles = StyleSheet.create({
   deleteButtonStyle: {
-    alignItems: 'flex-end',
-    paddingLeft: 10,
+    paddingLeft: theme.spacing.xsmall,
   },
   todoContainerStyle: {
     alignItems: 'center',
     backgroundColor: theme.colors.lightGray,
-    borderRadius: 15,
+    borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: theme.spacing.medium,

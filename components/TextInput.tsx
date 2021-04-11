@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { TextInput as RNTextInput, TextInputProps } from 'react-native'
+import { theme } from '../constants/theme'
 
 export interface WrappedTextInputProps
   extends Omit<TextInputProps, 'onChange'> {
@@ -14,12 +15,12 @@ export function TextInput(props: WrappedTextInputProps): JSX.Element {
   const { errors, multiline = false, value, placeholder, ...otherProps } = props
 
   const style = {
-    backgroundColor: 'white',
-    borderColor: 'black',
+    backgroundColor: theme.colors.lightGray,
+    borderColor: theme.colors.lightGray,
     borderRadius: 8,
     borderWidth: 2,
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: theme.spacing.large,
     paddingVertical: 20,
     width: '100%',
   }

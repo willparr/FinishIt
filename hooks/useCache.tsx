@@ -48,7 +48,7 @@ export function CacheProvider(props: CacheProviderProps): JSX.Element {
   const { children } = props
 
   // const [rehydrating, setRehydrating] = useState(true)
-  const [cache, setCache] = useState()
+  const [cache, setCache] = useState({})
 
   // useEffect(() => {
   //   rehydrateCache()
